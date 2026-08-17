@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>linkchain</title>
+    <meta
+      name="description"
+      content="A quiet, high-fashion link collection for everything you want people to click."
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="grain"></div>
+
+    <div class="page-shell">
+      <header class="topbar">
+        <div class="brand-block">
+          <span class="eyebrow">studio / links</span>
+          <h1 id="site-title">linkchain</h1>
+        </div>
+
+        <img
+          class="portrait"
+          src="assets/profile-placeholder.svg"
+          alt="Portrait placeholder"
+        />
+      </header>
+
+      <section class="search-panel" aria-label="Search links">
+        <label class="sr-only" for="search">Search links</label>
+        <input
+          id="search"
+          type="search"
+          placeholder="search by hidden name"
+          autocomplete="off"
+        />
+      </section>
+
+      <main>
+        <section id="links" class="link-grid" aria-live="polite"></section>
+
+        <aside id="detail" class="detail-panel" aria-live="polite"></aside>
+      </main>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
