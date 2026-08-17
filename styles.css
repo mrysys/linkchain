@@ -134,7 +134,7 @@ h1 {
   position: relative;
   display: block;
   overflow: hidden;
-  min-height: 280px;
+  min-height: 0;
   color: inherit;
   text-decoration: none;
   border: 1px solid var(--line);
@@ -171,64 +171,98 @@ h1 {
 
 .link-body {
   display: grid;
-  gap: 12px;
-  padding: 16px 16px 18px;
+  gap: 10px;
+  padding: 12px 16px 12px;
 }
 
 .link-topbar {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 10px;
+  letter-spacing: 0.2rem;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.link-title-row {
+  display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 10px;
-  color: var(--muted);
-  font-size: 10px;
-  letter-spacing: 0.18rem;
-  text-transform: uppercase;
+  gap: 12px;
 }
 
-.link-topbar .open-mark {
-  font-size: 1.1rem;
-  color: var(--text);
+.link-card h2 {
+  margin: 0;
+  font-family: Georgia, serif;
+  font-size: clamp(1.5rem, 2.6vw, 2.3rem);
+  font-weight: 500;
+  letter-spacing: -0.05em;
 }
 
-.link-preview {
-  min-height: 122px;
+.link-favicon {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
   border: 1px solid var(--line);
-  background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(0,0,0,0.28));
-  display: grid;
-  place-items: center;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.04);
+  object-fit: cover;
+}
+
+.link-url-shell {
   position: relative;
   overflow: hidden;
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,0.02);
+  cursor: pointer;
 }
 
-.link-preview::before {
-  content: "";
-  position: absolute;
-  inset: 14px;
-  border: 1px solid rgba(255,255,255,0.09);
-  background: linear-gradient(180deg, rgba(0,0,0,0.18), rgba(255,255,255,0.02));
-}
-
-.link-preview span {
-  position: relative;
-  z-index: 1;
-  font-size: 11px;
-  letter-spacing: 0.2rem;
-  color: rgba(255,255,255,0.55);
-  text-transform: uppercase;
-}
-
-.link-footer {
+.link-url-track {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  gap: 10px;
-  white-space: nowrap;
-  font-size: 11px;
-  letter-spacing: 0.12rem;
-  text-transform: uppercase;
+  gap: 26px;
+  width: max-content;
+  min-width: 100%;
+  padding: 8px 14px;
   color: var(--muted);
-  margin-top: -2px;
+  font-size: 10px;
+  letter-spacing: 0.14rem;
+  text-transform: lowercase;
+  white-space: nowrap;
+  animation: marquee 18s linear infinite;
+}
+
+.copy-status {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(12, 12, 12, 0.9);
+  color: var(--text);
+  font-size: 9px;
+  letter-spacing: 0.2rem;
+  text-transform: uppercase;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.link-url-shell.copied .copy-status {
+  opacity: 1;
+}
+
+.link-url-shell.copied .link-url-track {
+  animation-play-state: paused;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
 }
 
 .detail-panel {
@@ -243,12 +277,31 @@ h1 {
   display: block;
 }
 
+.detail-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 10px;
+}
+
 .detail-panel h3 {
-  margin: 0 0 6px;
+  margin: 0;
   font-family: Georgia, serif;
   font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 500;
   letter-spacing: -0.06em;
+}
+
+.detail-close {
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,0.02);
+  color: var(--text);
+  font-size: 10px;
+  letter-spacing: 0.16rem;
+  text-transform: uppercase;
+  padding: 8px 10px;
+  cursor: pointer;
 }
 
 .detail-panel p {
